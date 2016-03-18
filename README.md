@@ -45,7 +45,9 @@ After running `` $ grunt build ``, your deploy-ready code will be located in the
 Thanks to our developers who made this Craft CMS project scaffolding possible.
 * [Allen Pieper]
 * [Mark Reckard]
+* [Matthew Soyka]
 
 
   [Allen Pieper]: <https://github.com/allenpieper>
   [Mark Reckard]: <https://github.com/marker004>
+  [Matthew Soyka]: <https://github.com/m-soyka>
