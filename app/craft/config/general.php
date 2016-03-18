@@ -17,22 +17,22 @@ define('SITE_URL',    URI_SCHEME . $_SERVER['SERVER_NAME'] . '/');
 define('BASEPATH',    realpath(CRAFT_BASE_PATH . '/../') . '/');
 
 $customConfig = array(
-  
+
   // ------------------------------------------------------------
   // Environment: All
-  // ------------------------------------------------------------ 
+  // ------------------------------------------------------------
   '*' => array(
 
     // This is a value that we can append to all
     // css and js files to cachebust them all if we need to.
     // 'cacheBustValue'    => '20121017',
 
-    // The environment we set in index.php: live, dev, or local
+    // The environment we set in index.php: prod, staging, dev, or local
     // {% if craft.config.env == 'live' %}
     // 'env' => CRAFT_ENVIRONMENT,
 
     // We can use these variables in the URL and Path settings within
-    // the Craft Control Panel.  i.e. siteUrl => {siteUrl}, basePath => {basePath} 
+    // the Craft Control Panel.  i.e. siteUrl => {siteUrl}, basePath => {basePath}
     'environmentVariables' => array(
       'siteUrl'  => SITE_URL,
       'basePath' => BASEPATH
@@ -50,29 +50,47 @@ $customConfig = array(
     // 'activateAccountSuccessPath'  => 'members?activate=success',
     // 'activateAccountFailurePath'  => 'members?activate=fail',
   ),
-  
-  // ------------------------------------------------------------
-  // Environment: Dev
-  // ------------------------------------------------------------
-  'live' => array(
 
-    // Allow auto-updates on the live site?
-    // 'allowAutoUpdates' => true,
+  // ------------------------------------------------------------
+  // Environment: Local
+  // ------------------------------------------------------------
+  'local' => array(
+
+    'devMode' => true,
 
   ),
 
   // ------------------------------------------------------------
-  // Environment: Dev
+  // Environment: Development
   // ------------------------------------------------------------
   'dev' => array(
 
     'devMode' => true,
 
+  ),
+
+  // ------------------------------------------------------------
+  // Environment: Staging
+  // ------------------------------------------------------------
+  'staging' => array(
+
+    'devMode' => true,
+
+  ),
+
+  // ------------------------------------------------------------
+  // Environment: Production
+  // ------------------------------------------------------------
+  'prod' => array(
+
+    // Allow auto-updates on the live site?
+    // 'allowAutoUpdates' => true,
+
   )
 
 );
 
-// If a local config file exists, merge any local config settings 
+// If a local config file exists, merge any local config settings
 if (is_array($customLocalConfig = @include(CRAFT_CONFIG_PATH . 'local/general.php')))
 {
   $customGlobalConfig = array_merge($customConfig['*'], $customLocalConfig);

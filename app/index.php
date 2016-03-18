@@ -9,8 +9,16 @@ define('CRAFT_TEMPLATES_PATH', './assets/templates/');
 // Setup environment-friendly configs
 switch ($_SERVER['SERVER_NAME']) {
 
+  case 'NOTE: ADD_CRAFT_SITE_RELATIVE_BASE_URL_HERE' :
+    define('CRAFT_ENVIRONMENT', 'local');
+    break;
+
   case '' :
     define('CRAFT_ENVIRONMENT', 'dev');
+    break;
+
+  case '' :
+    define('CRAFT_ENVIRONMENT', 'staging');
     break;
 
   case '' :
@@ -18,7 +26,7 @@ switch ($_SERVER['SERVER_NAME']) {
     break;
 
   default :
-    define('CRAFT_ENVIRONMENT', 'local');
+    define('CRAFT_ENVIRONMENT', '*');
     break;
 
 }
